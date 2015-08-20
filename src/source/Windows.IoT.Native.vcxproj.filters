@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{4c8fbab4-463f-40e9-b571-4e3dad80c370}</UniqueIdentifier>
+      <Extensions>h</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="arduino.cpp" />
+    <ClCompile Include="CY8C9540ASupport.cpp" />
+    <ClCompile Include="DmapSupport.cpp" />
+    <ClCompile Include="eeprom.cpp" />
+    <ClCompile Include="GalileoPins.cpp" />
+    <ClCompile Include="GpioController.cpp" />
+    <ClCompile Include="HardwareSerial.cpp" />
+    <ClCompile Include="I2cController.cpp" />
+    <ClCompile Include="NetworkSerial.cpp" />
+    <ClCompile Include="PCA9685Support.cpp" />
+    <ClCompile Include="PCAL9535ASupport.cpp" />
+    <ClCompile Include="PulseIn.cpp" />
+    <ClCompile Include="Servo.cpp" />
+    <ClCompile Include="Spi.cpp" />
+    <ClCompile Include="SpiController.cpp" />
+    <ClCompile Include="WInterrupt.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\LiquidCrystal.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\Print.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\Stepper.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\Stream.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\WString.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AD7298Support.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Adc.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ADC108S102Support.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ArduinoCommon.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ArduinoError.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CY8C9540ASupport.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DmapSupport.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="eeprom.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ExpanderDefs.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="galileo.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="GalileoPins.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="GpioController.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="HardwareSerial.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="HiResTimer.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="I2cController.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MuxDefs.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="NetworkSerial.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="PCA9685Support.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="PCAL9535ASupport.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Public.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="PulseIn.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="quarklgpio.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Servo.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="spi.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SpiController.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowsRandom.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowsTime.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="WInterrupt.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Wire.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="arduino.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="avr\interrupt.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="avr\macros.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="avr\pgmspace.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
