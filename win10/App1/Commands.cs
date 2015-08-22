@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Windows.Input;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Popups;
+using System.Threading.Tasks;
+using Windows.UI.Core;
 
 namespace App1
 {
 
-//    var binding = new CommandBinding(MyCommands.DoSomethingCommand, DoSomething, CanDoSomething);
-
-//    // Register CommandBinding for all windows.
-//    CommandManager.RegisterClassCommandBinding(typeof(Window), binding);
-//        }
-
-//private void DoSomething(object sender, ExecutedRoutedEventArgs e)
-//{
+    // TOOD via CommandBinding
+    //  var binding = new CommandBinding(MyCommands.DoSomethingCommand, DoSomething, CanDoSomething);
+    //  // Register CommandBinding for all windows.
+    //  CommandManager.RegisterClassCommandBinding(typeof(Window), binding);
+    //  private void DoSomething(object sender, ExecutedRoutedEventArgs e)
 
     public abstract class Command : ICommand
     {
@@ -51,14 +51,45 @@ namespace App1
 
         public static ICommand Instance { get; private set; }
 
+        public static async void ExecuteAsync(CoreDispatcher dispatcher)
+        {
+            var task = dispatcher.RunAsync(CoreDispatcherPriority.High, ()
+                 => CmdGo.Instance.Execute(null));
+
+            //TaskScheduler.Current
+            await task;
+        }
+
         public override void Execute(object parameter)
         {
             var w = MainPage.Instance;
+            //if (!w.Dispatcher  as DispacherObject).CheckAccess())
+            //    return;
+            if (!w.Dispatcher.HasThreadAccess)
+            {
+                ExecuteAsync(w.Dispatcher);
+                return;
+            }
+
             var web = w.Web1 as WebView;
-            var url = new Uri(w.Url.Text);
+
+            var urlText = w.url.Text;
+            if (string.IsNullOrWhiteSpace(urlText))
+                return;
+
+            var url = new Uri(urlText);
+
+            w.url.Text = urlText;
+            w.url.SelectedIndex = 0;
+            w.url.TextBox.Focus(Windows.UI.Xaml.FocusState.Programmatic);
 
             // if (web.ExecutionMode)
-            web.Source = url;
+            try
+            {
+                web.Source = url;
+            }
+            catch (Exception ex) {
+                App.MessageBox(ex.Message); }
         }
     }
 

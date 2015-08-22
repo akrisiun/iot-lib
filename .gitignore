@@ -182,8 +182,16 @@ UpgradeLog*.htm
 # Microsoft Fakes
 FakesAssemblies/
 
-
+.git/
+.svn/
+.arch/
+.test/
+.tmp/
 
 *.ZIP
 *.doc*
 *.xls*
+ios/
+rpi.image/
+*.msi
+*.vsix
