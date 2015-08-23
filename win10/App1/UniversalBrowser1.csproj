@@ -8,7 +8,7 @@
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>App1</RootNamespace>
-    <AssemblyName>App1Browser</AssemblyName>
+    <AssemblyName>UniversalBrowser1</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
@@ -17,8 +17,10 @@
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>AppDeploy_TemporaryKey.pfx</PackageCertificateKeyFile>
-    <PackageCertificateThumbprint>6745820E1CF3A0E23AA2058DF996E5BE63E6D750</PackageCertificateThumbprint>
+    <PackageCertificateKeyFile>UniversalBrowser1_StoreKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>AE9785DE0707B792E3A0658A68E46A6943A6FFB2</PackageCertificateThumbprint>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
@@ -96,11 +98,13 @@
     </Content>
     <None Include="AppDeploy_TemporaryKey.pfx" />
     <None Include="project.json" />
+    <None Include="UniversalBrowser1_StoreKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Conf.cs" />
     <Compile Include="Ctrl\AppMethods.cs" />
     <Compile Include="BrowserEvents.cs" />
     <Compile Include="Commands.cs" />
@@ -116,6 +120,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

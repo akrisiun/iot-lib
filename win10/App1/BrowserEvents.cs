@@ -4,6 +4,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.ViewManagement;
 using System.Threading.Tasks;
 using Windows.System;
+using Windows.UI;
 
 namespace App1
 {
@@ -16,14 +17,7 @@ namespace App1
             @this.btnBack.Command = CmdBack.Instance;
 
             var web = @this.Web1;
-
-            // todo: config.json
-            var items = new string[]
-              { @"http://localhost:8080/",
-                @"http://192.168.1.12:8080/",
-                @"http://youtube.com",
-                @"https://msdn.microsoft.com/library/windows/apps/xaml/mt244352.aspx"
-            };
+            var items = Conf.UrlList;
 
             var url = @this.url;
             url.Bind(@this.urlText, @this.urlItem);
@@ -45,6 +39,36 @@ namespace App1
 
             var keyCheck = @this.keyboard as CheckBox;
             keyCheck.Click += KeyCheck_Click;
+
+            var fullScr = @this.fullScreen as Button;
+            fullScr.Click += FullScreen;
+        }
+
+        static void FullScreen(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            ApplicationView view = ApplicationView.GetForCurrentView();
+            bool isInFullScreenMode = view.IsFullScreenMode;
+
+
+            if (isInFullScreenMode)
+            {
+                view.ExitFullScreenMode();
+                button.Content = "FullScr";
+                view.ShowStandardSystemOverlays();
+            }
+            else
+            {
+                view.FullScreenSystemOverlayMode = FullScreenSystemOverlayMode.Minimal;
+                view.TryEnterFullScreenMode(); //  .FullScreenSystemOverlayMode = FullScreenSystemOverlayMode.Minimal;
+                var bar = view.TitleBar;
+                bar.BackgroundColor = Color.FromArgb(0, 0, 0, 0);
+                button.Content = "Windowed";
+            }
+
+            //if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
+            //    StatusBar statusBar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
+
         }
 
         static void UrlText_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)

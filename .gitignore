@@ -195,3 +195,8 @@ ios/
 rpi.image/
 *.msi
 *.vsix
+
+*.exe
+*.config
+*.dll.config
+*.StoreAssociation.xml

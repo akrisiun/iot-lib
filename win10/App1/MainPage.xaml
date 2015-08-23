@@ -170,7 +170,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="350" />
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="180" />
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Row="0" Margin="135 5 5 5" Orientation="Horizontal">
@@ -202,10 +202,13 @@
             <ComboBoxItem>Item2</ComboBoxItem>
         </local:ComboBoxEditable>
 
-        <StackPanel Orientation="Horizontal" Grid.Column="2">
-            <CheckBox 
+        <StackPanel Orientation="Horizontal" Grid.Column="2" Width="220">
+            <CheckBox Margin="0 0 0 0" Width="40"
                 x:Name="keyboard" x:FieldModifier="public"
                 Foreground="White" Content="Keyboard" />
+            <Button 
+                x:Name="fullScreen" x:FieldModifier="public"
+                Foreground="White" Content="FullScr" />
         </StackPanel>
 
         <!--<ListView x:Name="list" Grid.Row="1">
