@@ -1,4 +1,22 @@
-﻿
+﻿### Git clone + build
+
+```
+git clone https://github.com/akrisiun/iot-lib.git iot-lib
+iot-lib
+
+cd win10
+call msbuild
+```
+
+### Deploy, install AppX
+Powershell:
+```
+cd win10\bin\
+Set-ExecutionPolicy Unrestricted
+Show-WindowsDeveloperLicenseRegistration
+./Add-AppDevPackage.ps1
+```
+
 ### Iot links
 
 good intro:
