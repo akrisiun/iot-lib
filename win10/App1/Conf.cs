@@ -21,7 +21,9 @@ namespace App1
                     @"https://github.com/akrisiun/iot-lib",
                     @"http://localhost:8080/",
                     @"http://192.168.1.12:8080/",
-                    @"about:flags"
+					@"https://www.hackster.io/raspberry-pi?ref=topnav",
+                    @"about:flags",
+					@"http://pi.gadgetoid.com/pinout/spi"
                   };
             }
         }

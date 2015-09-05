@@ -25,7 +25,6 @@ namespace App1
             url.Item.GotFocus += Item_GotFocus;
             @this.urlText.KeyDown += UrlText_KeyDown;
 
-            // url.ItemsSource = items;
             url.Source = items;
             url.SelectedIndex = 0;
             url.PointerPressed += Url_PointerPressed;
@@ -36,8 +35,10 @@ namespace App1
                 web.Source = new Uri(urlString);
 
             web.NavigationCompleted += Web_NavigationCompleted;
+            web.PointerPressed += Web_PointerPressed;
+            web.DOMContentLoaded += Web_DOMContentLoaded; web.FrameDOMContentLoaded += Web_FrameDOMContentLoaded;
 
-            var keyCheck = @this.keyboard as CheckBox;
+             var keyCheck = @this.keyboard as CheckBox;
             keyCheck.Click += KeyCheck_Click;
 
             var fullScr = @this.fullScreen as Button;
@@ -60,15 +61,11 @@ namespace App1
             else
             {
                 view.FullScreenSystemOverlayMode = FullScreenSystemOverlayMode.Minimal;
-                view.TryEnterFullScreenMode(); //  .FullScreenSystemOverlayMode = FullScreenSystemOverlayMode.Minimal;
+                view.TryEnterFullScreenMode();
                 var bar = view.TitleBar;
                 bar.BackgroundColor = Color.FromArgb(0, 0, 0, 0);
                 button.Content = "Windowed";
             }
-
-            //if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
-            //    StatusBar statusBar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
-
         }
 
         static void UrlText_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
@@ -136,13 +133,65 @@ namespace App1
 
         static void Web_NavigationCompleted(WebView sender, WebViewNavigationCompletedEventArgs args)
         {
-            var url = MainPage.Instance.url;
-            var newUrlText = sender.Source.AbsoluteUri;
+            var urlArg = args.Uri;
+            var newUrlText = urlArg.AbsoluteUri; // sender.Source.AbsoluteUri;
             if (newUrlText == null)
                 return;
 
+            var url = MainPage.Instance.url;
             url.SetItem(0, newUrlText);
             url.SelectedIndex = 0;
         }
+
+        static void Web_PointerPressed(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
+        {
+            var ptr = e.Pointer;
+            if (ptr.PointerDeviceType == Windows.Devices.Input.PointerDeviceType.Mouse)
+            {
+                Windows.UI.Input.PointerPoint ptrPt = e.GetCurrentPoint(sender as UIElement);
+                if (ptrPt.Properties.IsRightButtonPressed)
+                {
+                    // 
+                }
+            }
+        }
+
+        static void Web_FrameDOMContentLoaded(WebView sender, WebViewDOMContentLoadedEventArgs args)
+        {
+            //  args.GetType()
+        }
+
+        static void Web_DOMContentLoaded(WebView sender, WebViewDOMContentLoadedEventArgs args)
+        {
+            //var view = sender.DataTransferPackage.GetView();
+            //DataTransferManager dataTransferManager = DataTransferManager.GetForCurrentView();
+            //dataTransferManager.DataRequested += new TypedEventHandler<DataTransferManager, DataRequestedEventArgs>(this.DataRequested);
+        }
+    }
+    
+}
+
+/*
+// http://blogs.msdn.com/b/wsdevsol/archive/2012/10/18/nine-things-you-need-to-know-about-webview.aspx 
+GetFileFromApplicationUriAsync, most of the times just hangs for ever, any ideas why that happens. I am debugging the app on the simulator.
+
+A couple notes :
+
+BaseLocalFolder = "ms-appdata:///local/";
+Uri baseUri = new Uri(BaseLocalFolder);
+Uri cardsUri = new Uri(baseUri, Path.Combine(set, "cards.ccc"));
+StorageFile file = await StorageFile.GetFileFromApplicationUriAsync(cardsUri);
+
+using (IInputStream stream = await file.OpenSequentialReadAsync())
+{
+    using (StreamReader rdr = new StreamReader(stream.AsStreamForRead()))
+    {
+        var cardArray = Windows.Data.Json.JsonArray.Parse(rdr.ReadToEnd());
+
+        foreach (Tables.Card card in cardArray.ToCards())
+        {
+            _cards.Add(card.ToCardViewModel());
+        }
     }
 }
+*/

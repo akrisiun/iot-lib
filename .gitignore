@@ -200,3 +200,5 @@ rpi.image/
 *.config
 *.dll.config
 *.StoreAssociation.xml
+win10/vb/
+winxp/

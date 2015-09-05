@@ -9,6 +9,10 @@ call msbuild
 ```
 
 ### Deploy, install AppX
+
+standalone SDK download : Windows Kits\10\StandaloneSDK\Installers
+https://dev.windows.com/en-us/downloads/windows-10-sdk
+
 Powershell:
 ```
 cd win10\bin\

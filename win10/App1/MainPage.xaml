@@ -202,11 +202,11 @@
             <ComboBoxItem>Item2</ComboBoxItem>
         </local:ComboBoxEditable>
 
-        <StackPanel Orientation="Horizontal" Grid.Column="2" Width="220">
-            <CheckBox Margin="0 0 0 0" Width="40"
+        <StackPanel Orientation="Horizontal" Grid.Column="2" Width="280">
+            <CheckBox Margin="0 0 0 0" MaxWidth="25" Padding="0 5 0 0"
                 x:Name="keyboard" x:FieldModifier="public"
                 Foreground="White" Content="Keyboard" />
-            <Button 
+            <Button Margin="2 0 20 0"
                 x:Name="fullScreen" x:FieldModifier="public"
                 Foreground="White" Content="FullScr" />
         </StackPanel>
