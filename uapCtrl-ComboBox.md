@@ -2,6 +2,7 @@
 
 http://stackoverflow.com/questions/16025064/equivalent-of-editable-combobox-in-winrt
 
+```
 <Setter Property = "MinWidth" Value="{ThemeResource TextControlThemeMinWidth}"/>
     <Setter Property = "MinHeight" Value="{ThemeResource TextControlThemeMinHeight}"/>
     <Setter Property = "Foreground" Value="{ThemeResource TextBoxForegroundThemeBrush}"/>
@@ -146,3 +147,4 @@ http://stackoverflow.com/questions/16025064/equivalent-of-editable-combobox-in-w
                         </VisualStateGroup>
 */
 
+```
