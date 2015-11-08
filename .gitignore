@@ -202,3 +202,6 @@ rpi.image/
 *.StoreAssociation.xml
 win10/vb/
 winxp/
+ms-iot.win10/Blinky/
+win10/web/
+ms-iot.win10/src/
