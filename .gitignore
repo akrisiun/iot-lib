@@ -205,3 +205,6 @@ winxp/
 ms-iot.win10/Blinky/
 win10/web/
 ms-iot.win10/src/
+ms-directx/CSUniversalAppEditableVector/
+ms-iot.win10/org.alljoyn/IoTOnboardingService/
+ms-iot.win10/org.alljoyn/Driver/
