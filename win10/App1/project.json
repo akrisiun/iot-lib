@@ -1,6 +1,7 @@
 ﻿{
+    "name": "UniversalBrowser1",
     "dependencies": {
-        "Microsoft.ApplicationInsights.WindowsApps": "1.0.0",
+        // "Microsoft.ApplicationInsights.WindowsApps": "1.0.0",
         "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
         "Microsoft.NETCore": "5.0.0",
         "System.AppContext": "4.0.0",
@@ -15,6 +16,8 @@
     },
     "runtimes": {
         "win10-arm-aot": { },
-        "win10-x64": { }
+        "win10-x64-aot": { },
+        "win10-x64": { },
+        "win10-arm": { }
     }
 }
