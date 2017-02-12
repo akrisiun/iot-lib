@@ -30,7 +30,7 @@ namespace App1
             url.PointerPressed += Url_PointerPressed;
             url.SelectionChanged += Url_SelectionChanged;
 
-            var urlString = items[0] as string;
+            var urlString = System.Linq.Enumerable.FirstOrDefault(items);
             if (!String.IsNullOrWhiteSpace(urlString))
                 web.Source = new Uri(urlString);
 
@@ -38,8 +38,8 @@ namespace App1
             web.PointerPressed += Web_PointerPressed;
             web.DOMContentLoaded += Web_DOMContentLoaded; web.FrameDOMContentLoaded += Web_FrameDOMContentLoaded;
 
-             var keyCheck = @this.keyboard as CheckBox;
-            keyCheck.Click += KeyCheck_Click;
+            // var keyCheck = @this.keyboard as CheckBox;
+            // keyCheck.Click += KeyCheck_Click;
 
             var fullScr = @this.fullScreen as Button;
             fullScr.Click += FullScreen;
@@ -113,7 +113,9 @@ namespace App1
             if (cbo.SelectedIndex >= 1)
             {
                 // cbo.SelectedValue as ComboBoxItem
-                cbo.Text = cbo.ItemsContent[cbo.SelectedIndex];
+                var textNew = cbo.ItemsContent[cbo.SelectedIndex];
+                if (!textNew.Equals(cbo.ItemsContent[0]))
+                    cbo.Text = textNew;
                 cbo.SelectedIndex = 0;
                 var cmd = MainPage.Instance.btnGO.Command as CmdGo;
                 Task.Factory.StartNew(() =>

@@ -1,14 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace App1
 {
     class Conf
     {
-        public static string[] UrlList
+        public static IEnumerable<string> UrlList
         {
             get
             {
-                return new string[]
+                string[] list = new string[]
                   { @"http://localhost/",
                     @"about:blank",
                     @"http://youtube.com",
@@ -25,6 +26,9 @@ namespace App1
                     @"about:flags",
 					@"http://pi.gadgetoid.com/pinout/spi"
                   };
+
+                foreach (string item in list)
+                    yield return item;
             }
         }
     }

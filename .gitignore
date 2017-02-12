@@ -211,3 +211,4 @@ ms-iot.win10/org.alljoyn/Driver/
 win81/
 *.lock.json
 .vs*/
+win10/App1/conf.json

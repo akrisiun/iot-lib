@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="23552Andrius-K.UniversalBrowser1" Publisher="CN=Andriusk" Version="1.3.3.0" />
+  <Identity Name="23552Andrius-K.UniversalBrowser1" Publisher="CN=Andrius" Version="1.4.3.0" />
   <mp:PhoneIdentity PhoneProductId="5a090fb1-606a-4bca-b7f9-ad7f17b460e5" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>UniversalBrowser1</DisplayName>

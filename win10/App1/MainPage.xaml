@@ -187,12 +187,14 @@
 
         <local:ComboBoxEditable x:Name="url" x:FieldModifier="public" 
                   Foreground="White" Background="#040404" BorderBrush="Silver"
-                  Padding="10 5 5 0" Margin="2,5,5,0" FontSize="13" Grid.Column="1" HorizontalAlignment="Stretch">
+                  Padding="10 5 5 0" Margin="2,5,5,0" 
+                  FontSize="13" Grid.Column="1" HorizontalAlignment="Stretch">
             <ComboBoxItem x:Name="urlItem"  x:FieldModifier="public"
                               IsSelected="True" Background="Transparent">
                 <TextBox x:Name="urlText" x:FieldModifier="public"
                              Foreground="White"
-                             Style="{StaticResource ComboBoxItemTextBox}" AcceptsReturn="False"
+                             Style="{StaticResource ComboBoxItemTextBox}" 
+                             AcceptsReturn="False"
                              IsReadOnly="False"
                              BorderBrush="Transparent"
                              Text="Loading ..."
@@ -203,10 +205,11 @@
         </local:ComboBoxEditable>
 
         <StackPanel Orientation="Horizontal" Grid.Column="2" Width="280">
-            <CheckBox Margin="0 0 0 0" MaxWidth="25" Padding="0 5 0 0"
+            <!--<CheckBox Margin="0 0 0 0" MaxWidth="25" Padding="0 5 0 0"
                 x:Name="keyboard" x:FieldModifier="public"
-                Foreground="White" Content="Keyboard" />
-            <Button Margin="2 0 20 0"
+                Foreground="White" Content="Keyboard" />-->
+            
+            <Button Margin="20 0 40 0"
                 x:Name="fullScreen" x:FieldModifier="public"
                 Foreground="White" Content="FullScr" />
         </StackPanel>

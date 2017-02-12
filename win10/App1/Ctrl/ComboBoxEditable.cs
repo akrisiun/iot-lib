@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
@@ -30,7 +33,8 @@ namespace App1
 
         public IEnumerable Source {
             get { return GetValue(SourceProperty) as IEnumerable; }
-            set { SetValue(SourceProperty, value as IEnumerable);
+            set {
+                SetValue(SourceProperty, value as IEnumerable);
                 BindSource();
             }
         }
@@ -40,8 +44,9 @@ namespace App1
             get { return GetValue(SourceProperty) as string[]; }
             set
             {
-                var selected = this.SelectedIndex;
                 SetValue(SourceProperty, value);
+
+                var selected = this.SelectedIndex;
                 if (selected > 0)
                 {
                     var itemSel = Items[selected];
@@ -79,13 +84,35 @@ namespace App1
 
         protected void BindSource()
         {
-            var data = Source as string[];
-            TextBox.Text = data[0];
-            for (int i = 1; i < Items.Count; i++)
-                (Items[i] as ComboBoxItem).Content = data[i];
+            var dataSrc = Source as IEnumerable<string>;
+            if (dataSrc == null)
+                return;
 
-            while (Items.Count < data.Length)
-                Items.Add(new ComboBoxItem { Content = data[Items.Count] });
+            var data = dataSrc.ToList();
+            TextBox.Text = data[0];
+            string[] array = new string[] { };
+            Array.Resize(ref array, data.Count);
+
+            int i = 0;
+            array[i] = data[i];
+
+            for (i = 1;i < Items.Count; i++)
+            {
+                string value = data[i] as string;
+                byte[] bytes = UTF8Encoding.Unicode.GetBytes(value);
+                array[i] = UTF8Encoding.Unicode.GetString(bytes);
+                (Items[i] as ComboBoxItem).Content = array[i];
+            }
+
+            while (Items.Count < data.Count - 1)
+            {
+                i++;
+                string value = data[i] as string;
+                array[i] = value;
+                Items.Add(new ComboBoxItem { Content = array[Items.Count] });
+            }
+
+            ItemsContent = array;
         }
 
         void Box_KeyDown(object sender, KeyRoutedEventArgs e)
@@ -102,6 +129,8 @@ namespace App1
                 box.Text = box.Text.Insert(pos, " ");
                 box.SelectionStart = pos + 1;
                 e.Handled = true;
+
+                this.TextBox.Focus(FocusState.Keyboard);
             }
         }
 
@@ -146,18 +175,18 @@ namespace App1
             Text = text;
         }
 
+        protected string lastText;
         public string Text
         {
-            get { return TextBox == null ? null : TextBox.Text; }
+            get { return TextBox == null ? lastText : TextBox.Text; }
             set
             {
                 if (TextBox == null || TextBox.Text.Equals(value))
                     return;
 
-                TextBox.Text = value;
-                //var items = ItemsSource as string[];
-                //items[0] = value;
-                //ItemsSource = items;
+                lastText = value;
+                TextBox.Text = lastText;
+                this.TextBox.Focus(FocusState.Keyboard);
             }
         }
     }
